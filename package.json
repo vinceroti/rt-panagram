@@ -1,14 +1,14 @@
 {
-  "name": "Pangrams UI",
+  "name": "pangrams-ui",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-reset-and-normalize": "^2.3.5",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-html": "^6.1.2",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "2.1.2"
   },

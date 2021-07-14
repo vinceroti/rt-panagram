@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panagram UI</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
+  </head>
+  <body>
+    <main>
+      <h1>Is This A Panagram?</h1>
+      <form>
+        <label for="panagram"
+          >Panagram <span class="required">(Required)</span></label
+        >
+        <input
+          name="panagram"
+          aria-label="panagram"
+          class="input"
+          type="text"
+          placeholder="Enter Panagram"
+        />
+        <button type="submit" class="button-primary">
+          <span>Submit</span>
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+  :root {
+    --white: #ffffff;
+    --black: #000000;
+    --red: #cc0000;
+    --green: green;
+    --gold: gold;
+  }
+  .red {
+    color: #cc0000;
+  }
+  .required {
+    color: var(--red);
+  }
+</style>

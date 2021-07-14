@@ -12,7 +12,7 @@ module.exports = {
     parser: "babel-eslint",
   },
   // required to lint *.vue files
-  plugins: ["prettier",],
+  plugins: ["prettier","html"],
   // add your custom rules here
   rules: {
     "object-shorthand": "off",

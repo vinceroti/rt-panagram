@@ -1,6 +1,5 @@
 {
-  "editor.formatOnSave": false,
-  "eslint.enable": true,
+  "editor.formatOnSave": true,
   "eslint.run": "onType",
   "eslint.validate": [
     "vue",
@@ -15,5 +14,5 @@
   "vetur.validation.script": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
 }
