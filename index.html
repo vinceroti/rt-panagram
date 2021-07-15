@@ -7,13 +7,13 @@
     <title>Panagram UI</title>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto"
+      href="https://fonts.googleapis.com/css?family=Roboto|Roboto:b"
     />
   </head>
   <body>
     <main>
       <h1>Is This A Panagram?</h1>
-      <form>
+      <form id="panagram-form">
         <label for="panagram"
           >Panagram <span class="required">(Required)</span></label
         >
@@ -22,19 +22,74 @@
           aria-label="panagram"
           class="input"
           type="text"
+          required
           placeholder="Enter Panagram"
         />
         <button type="submit" class="button-primary">
           <span>Submit</span>
         </button>
       </form>
+      <div id="result" class="hide"></div>
     </main>
   </body>
 </html>
 
+<script>
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  function removeRepeats(arr) {
+    // filter out repeated chars
+    return arr.filter((item, pos) => {
+      return arr.indexOf(item) == pos;
+    });
+  }
+
+  function missingChars(panagram) {
+    const alphabetArr = alphabet.split("");
+
+    panagram.split("").forEach((e) => {
+      // go through remaining chars and remove them from alphabetArr
+      const i = alphabetArr.indexOf(e);
+      if (i >= 0) alphabetArr.splice(i, 1);
+    });
+    return alphabetArr.join("");
+  }
+  function panagramHandler(panagram) {
+    panagram = panagram.toLowerCase(); // lowercase everything
+    panagram = panagram.replace(/[^\w\s]/gi, ""); // remove special chars
+    let arr = panagram.split("");
+    arr = removeRepeats(arr); // remove repeats
+    const possiblePanagram = arr.sort().join("").trim(); //sort & join array & remove whitespace
+
+    return alphabet === possiblePanagram
+      ? "PANAGRAM"
+      : missingChars(possiblePanagram, alphabet);
+  }
+  function formHandler(e) {
+    e.preventDefault();
+    let data = new FormData(e.target);
+    const panagram = data.get("panagram");
+    if (!panagram) return;
+
+    const result = panagramHandler(panagram);
+    const resultDiv = document.querySelector("#result");
+    resultDiv.innerHTML = `RESULT: ${result}`;
+    resultDiv.classList.remove("hide");
+    resultDiv.classList.add("show");
+  }
+  // wait for dom to be ready
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("#panagram-form");
+    form.addEventListener("submit", formHandler);
+  });
+</script>
+
 <style>
   body {
     font-family: "Roboto", sans-serif;
+  }
+  h1 {
+    font-weight: normal;
   }
   :root {
     --white: #ffffff;
@@ -43,10 +98,20 @@
     --green: green;
     --gold: gold;
   }
-  .red {
-    color: #cc0000;
-  }
   .required {
+    font-weight: bold;
+  }
+  .error {
     color: var(--red);
+  }
+  #result {
+    margin: 5px 0;
+    transition: 0.3s opacity ease-in-out;
+  }
+  .hide {
+    opacity: 0;
+  }
+  .show {
+    opacity: 1;
   }
 </style>
