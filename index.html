@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panagram UI</title>
+    <title>Pangram UI</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto|Roboto:b"
@@ -12,18 +12,18 @@
   </head>
   <body>
     <main>
-      <h1>Is This A Panagram?</h1>
-      <form id="panagram-form">
-        <label for="panagram"
-          >Panagram <span class="required">(Required)</span></label
+      <h1>Is This A Pangram?</h1>
+      <form id="pangram-form">
+        <label for="pangram"
+          >Pangram <span class="required">(Required)</span></label
         >
         <input
-          name="panagram"
-          aria-label="panagram"
+          name="pangram"
+          aria-label="pangram"
           class="input"
           type="text"
           required
-          placeholder="Enter Panagram"
+          placeholder="Enter Pangram"
         />
         <button type="submit" class="button-primary">
           <span>Submit</span>
@@ -44,34 +44,34 @@
     });
   }
 
-  function missingChars(panagram) {
+  function missingChars(pangram) {
     const alphabetArr = alphabet.split("");
 
-    panagram.split("").forEach((e) => {
+    pangram.split("").forEach((e) => {
       // go through remaining chars and remove them from alphabetArr
       const i = alphabetArr.indexOf(e);
       if (i >= 0) alphabetArr.splice(i, 1);
     });
     return alphabetArr.join("");
   }
-  function panagramHandler(panagram) {
-    panagram = panagram.toLowerCase(); // lowercase everything
-    panagram = panagram.replace(/[^\w\s]/gi, ""); // remove special chars
-    let arr = panagram.split("");
+  function pangramHandler(pangram) {
+    pangram = pangram.toLowerCase(); // lowercase everything
+    pangram = pangram.replace(/[^\w\s]/gi, ""); // remove special chars
+    let arr = pangram.split("");
     arr = removeRepeats(arr); // remove repeats
-    const possiblePanagram = arr.sort().join("").trim(); //sort & join array & remove whitespace
+    const possiblePangram = arr.sort().join("").trim(); //sort & join array & remove whitespace
 
-    return alphabet === possiblePanagram
-      ? "PANAGRAM"
-      : missingChars(possiblePanagram, alphabet);
+    return alphabet === possiblePangram
+      ? "PANGRAM"
+      : missingChars(possiblePangram, alphabet);
   }
   function formHandler(e) {
     e.preventDefault();
     let data = new FormData(e.target);
-    const panagram = data.get("panagram");
-    if (!panagram) return;
+    const pangram = data.get("pangram");
+    if (!pangram) return;
 
-    const result = panagramHandler(panagram);
+    const result = pangramHandler(pangram);
     const resultDiv = document.querySelector("#result");
     resultDiv.innerHTML = `RESULT: ${result}`;
     resultDiv.classList.remove("hide");
@@ -79,7 +79,7 @@
   }
   // wait for dom to be ready
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("#panagram-form");
+    const form = document.querySelector("#pangram-form");
     form.addEventListener("submit", formHandler);
   });
 </script>
