@@ -14,6 +14,9 @@ module.exports = {
   // required to lint *.vue files
   plugins: ["prettier","html"],
   // add your custom rules here
+  parserOptions: {
+    "ecmaVersion": 2020,
+  },
   rules: {
     "object-shorthand": "off",
     "prettier/prettier": "error",
