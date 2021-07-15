@@ -38,6 +38,7 @@
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   function removeRepeats(arr) {
+    // filter out repeated chars
     return arr.filter((item, pos) => {
       return arr.indexOf(item) == pos;
     });
