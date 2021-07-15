@@ -1,5 +1,7 @@
 # Static HTML Pangram page
 
+Codepen: https://codepen.io/vinceroti/pen/ZEKexNE
+
 This is a static HTML webpage with a form to see if you have a pangram or not.
 
 If you enter a pangram it will return "PANGRAM"
